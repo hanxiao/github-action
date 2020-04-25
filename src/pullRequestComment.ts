@@ -14,7 +14,7 @@ async function getComment() {
     const response = await octokit.issues.listComments({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number });
 
     //TODO: check the below regex
-    return response.data.find(comment => comment.body.match(/.*CLA Assistant Lite.*/));
+    return response.data.find(comment => comment.body.match(/.*Jina CLA check.*/));
   } catch (e) {
     core.setFailed("Error occured when getting  all the comments of the pull request: " + e.message);
   }
@@ -26,7 +26,7 @@ function commentContent(signed: boolean, committerMap: CommitterMap): string {
     core.debug("all signed flag inside commentContent is" + signed)
     // labelName.current_name = "CLA signed :smiley:";
     // updateLabel(signed, labelName);
-    return `**CLA Assistant Lite** All Contributors  have signed the CLA. `;
+    return `**Jina CLA check** ✅ All Contributors have signed the CLA. `;
   }
   //labelName.current_name = "CLA Not Signed :worried:";
   // updateLabel(signed, labelName)
@@ -36,7 +36,7 @@ function commentContent(signed: boolean, committerMap: CommitterMap): string {
       committerMap.signed.length + committerMap.notSigned.length;
   }
   let you = committersCount > 1 ? "you all" : "you";
-  let text = `**CLA Assistant Lite:** <br/>Thank you for your submission, we really appreciate it. Like many open-source projects, we ask that ${you} sign our [Contributor License Agreement](${pathToCLADocument()}) before we can accept your contribution. You can sign the CLA by just  posting a Pull Request Comment same as the below format.
+  let text = `**Jina CLA check:** <br/>Thank you for your pull request. It looks like this may be your first contribution to an open source project maintained by Jina AI Limited. Before we can look at your pull request, we kindly ask that ${you} sign our [Contributor License Agreement](${pathToCLADocument()}). You can sign the CLA by just simply posting a Pull Request Comment same as the below format.
   - - -
   ***I have read the CLA Document and I hereby sign the CLA***
   - - - 
