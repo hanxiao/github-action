@@ -45,7 +45,7 @@ export async function addEmptyCommit() {
                 })
 
             } catch (e) {
-                core.error(`failed when adding empty commit  with the contributor's signature name `)
+                core.error(`failed when adding empty commit with the contributor's signature name `)
 
             }
         }
