@@ -36,7 +36,8 @@ function commentContent(signed: boolean, committerMap: CommitterMap): string {
       committerMap.signed.length + committerMap.notSigned.length;
   }
   let you = committersCount > 1 ? "you all" : "you";
-  let text = `**Jina CLA check:** <br/>Thank you for your pull request. It looks like this may be your first contribution to an open source project maintained by Jina AI Limited. Before we can look at your pull request, we kindly ask that ${you} sign our [Contributor License Agreement](${pathToCLADocument()}). You can sign the CLA by just simply posting a Pull Request Comment same as the below format.
+  let text = `**Jina CLA check**<br/>
+  ❤️ Thank you for your pull request. It looks like this is your first contribution to an open source project maintained by Jina AI Limited. Before we can look at your pull request, we kindly ask that ${you} sign our [Contributor License Agreement](${pathToCLADocument()}). You can sign it by commenting in format below.
   - - -
   ***I have read the CLA Document and I hereby sign the CLA***
   - - - 
