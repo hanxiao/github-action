@@ -113,11 +113,11 @@ export async function getclas(pullRequestNo: number) {
     signed = true
   }
   try {
-    const reactedCommitters: ReactedCommitterMap = (await prComment(signed, committerMap, committers, pullRequestNo)) as ReactedCommitterMap
     if (signed) {
       core.info("All committers have signed the CLA")
       return
     }
+    const reactedCommitters: ReactedCommitterMap = (await prComment(signed, committerMap, committers, pullRequestNo)) as ReactedCommitterMap
     if (reactedCommitters) {
       if (reactedCommitters.newSigned) {
         clas.signedContributors.push(...reactedCommitters.newSigned)
